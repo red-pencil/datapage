@@ -192,30 +192,23 @@ function rotateWord() {
     
     if (!currentEl || !nextEl) return;
     
-    // Calculate next index
     var nextIndex = (wordIndex + 1) % words.length;
-    
-    // Set next word text to the upcoming word
     nextEl.textContent = words[nextIndex];
     
-    // Trigger animation
+    currentEl.classList.remove('active');
     currentEl.classList.add('slide-up');
+    
     nextEl.classList.add('slide-down');
     
-    // After animation (500ms), finalize the swap
     setTimeout(function() {
-      // Remove animation classes
-      currentEl.classList.remove('slide-up');
       nextEl.classList.remove('slide-down');
-      
-      // Swap which element is active/inactive by swapping classes
-      currentEl.classList.remove('active');
-      currentEl.classList.add('inactive');
-      
       nextEl.classList.remove('inactive');
       nextEl.classList.add('active');
-      
-      // Update word index
+    }, 50);
+    
+    setTimeout(function() {
+      currentEl.classList.remove('slide-up');
+      currentEl.classList.add('inactive');
       wordIndex = nextIndex;
     }, 500);
   }
@@ -224,11 +217,11 @@ function rotateWord() {
     var words = i18n[currentLang].heroTitleWords;
     if (!words) return;
     
-    var currentEl = document.querySelector('.word-carousel .word.current');
-    var nextEl = document.querySelector('.word-carousel .word.next');
+    var activeEl = document.querySelector('.word-carousel .word.active');
+    var inactiveEl = document.querySelector('.word-carousel .word.inactive');
     
-    if (currentEl) currentEl.textContent = words[wordIndex];
-    if (nextEl) nextEl.textContent = words[(wordIndex + 1) % words.length];
+    if (activeEl) activeEl.textContent = words[wordIndex];
+    if (inactiveEl) inactiveEl.textContent = words[(wordIndex + 1) % words.length];
   }
 
   function updateLangSwitcher() {
