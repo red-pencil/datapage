@@ -4,7 +4,7 @@
   //Translations
   const i18n = {
     zh: {
-      heroTitle: "Ego data for Robot",
+      heroTitle: "数据赋能具身智能",
       cta: "了解更多",
       products: [
         { title: "数据采集", desc: "高效采集机器人设备数据，支持多种协议和格式" },
@@ -47,11 +47,34 @@
     // Update lang switcher UI
     updateLangSwitcher();
     
-    // Add event listener for language switch
+    // Add event listener for language switch button
     const langBtn = document.getElementById('lang-switch');
     if (langBtn) {
-      langBtn.addEventListener('click', toggleLanguage);
+      langBtn.addEventListener('click', toggleLangMenu);
     }
+    
+    // Add event listeners for language options
+    document.querySelectorAll('.lang-option').forEach(option => {
+      option.addEventListener('click', function(e) {
+        const lang = this.getAttribute('data-lang');
+        if (lang && lang !== currentLang) {
+          currentLang = lang;
+          localStorage.setItem('rdv-lang', currentLang);
+          applyTranslations();
+          updateLangSwitcher();
+        }
+        // Close menu after selection
+        closeLangMenu();
+      });
+    });
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', function(e) {
+      const dropdown = document.querySelector('.lang-dropdown');
+      if (dropdown && !dropdown.contains(e.target)) {
+        closeLangMenu();
+      }
+    });
     
     // Add event listener for scroll arrow
     const arrow = document.getElementById('hero-arrow');
@@ -60,21 +83,30 @@
     }
   }
 
-  function toggleLanguage() {
-    currentLang = currentLang === 'zh' ? 'en' : 'zh';
-    localStorage.setItem('rdv-lang', currentLang);
-    applyTranslations();
-    updateLangSwitcher();
+  function toggleLangMenu(e) {
+    e.stopPropagation();
+    const menu = document.getElementById('lang-menu');
+    if (menu) {
+      menu.classList.toggle('show');
+    }
+  }
+
+  function closeLangMenu() {
+    const menu = document.getElementById('lang-menu');
+    if (menu) {
+      menu.classList.remove('show');
+    }
   }
 
   function updateLangSwitcher() {
-    const btn = document.getElementById('lang-switch');
-    if (!btn) return;
-    
-    // Toggle between globe (EN) and comments (ZH) icons
-    btn.innerHTML = currentLang === 'zh' 
-      ? '<i class="fa-solid fa-comments"></i>' 
-      : '<i class="fa-solid fa-globe"></i>';
+    // Update active state in menu
+    document.querySelectorAll('.lang-option').forEach(option => {
+      if (option.getAttribute('data-lang') === currentLang) {
+        option.classList.add('active');
+      } else {
+        option.classList.remove('active');
+      }
+    });
   }
 
   function scrollToProducts() {
