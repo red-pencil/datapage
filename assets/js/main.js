@@ -53,6 +53,9 @@
     // Update lang switcher UI
     updateLangSwitcher();
     
+    // Init theme
+    initTheme();
+    
     // Add event listener for language switch button
     var langBtn = document.getElementById('lang-switch');
     if (langBtn) {
@@ -102,6 +105,36 @@
     if (menu) {
       menu.classList.remove('show');
     }
+  }
+
+  function initTheme() {
+    var savedTheme = localStorage.getItem('rdv-theme');
+    var theme = savedTheme ? savedTheme : 'light';
+    setTheme(theme);
+    
+    var themeBtn = document.getElementById('theme-switch');
+    if (themeBtn) {
+      themeBtn.addEventListener('click', toggleTheme);
+    }
+  }
+
+  function setTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('rdv-theme', theme);
+    
+    var themeBtn = document.getElementById('theme-switch');
+    if (themeBtn) {
+      var icon = themeBtn.querySelector('i');
+      if (icon) {
+        icon.className = theme === 'dark' ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+      }
+    }
+  }
+
+  function toggleTheme() {
+    var currentTheme = document.documentElement.getAttribute('data-theme');
+    var newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    setTheme(newTheme);
   }
 
   function startWordCarousel() {

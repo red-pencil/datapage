@@ -12,6 +12,15 @@
   --text-secondary: #666666;
   --border-light: #e5e5e5;
   --header-height: 60px;
+  --bg-light: #f5f5f5;
+}
+
+[data-theme="dark"] {
+  --bg-white: #1a1a1a;
+  --text-primary: #e5e5e5;
+  --text-secondary: #999999;
+  --border-light: #333333;
+  --bg-light: #2a2a2a;
 }
 
 html {
@@ -55,6 +64,36 @@ body {
   letter-spacing: 1px;
 }
 
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.theme-switch {
+  background: none;
+  border: none;
+  font-size: 0;
+  cursor: pointer;
+  color: var(--text-secondary);
+  padding: 8px;
+  border-radius: 4px;
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 36px;
+}
+
+.theme-switch:hover {
+  background: var(--bg-light);
+}
+
+.theme-switch i {
+  font-size: 18px;
+}
+
 .lang-switch {
   background: none;
   border: none;
@@ -72,7 +111,7 @@ body {
 }
 
 .lang-switch:hover {
-  background: #f5f5f5;
+  background: var(--bg-light);
 }
 
 .lang-switch i {
@@ -127,7 +166,7 @@ body {
 }
 
 .lang-option:hover {
-  background: #f5f5f5;
+  background: var(--bg-light);
   color: var(--text-primary);
 }
 
