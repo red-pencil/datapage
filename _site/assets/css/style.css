@@ -58,30 +58,30 @@ body {
 .lang-switch {
   background: none;
   border: none;
-  font-size: 14px;
+  font-size: 0;
   cursor: pointer;
   color: var(--text-secondary);
-  padding: 8px 12px;
+  padding: 8px;
   border-radius: 4px;
   transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 36px;
 }
 
 .lang-switch:hover {
   background: #f5f5f5;
 }
 
-.lang-en, .lang-zh {
-  color: var(--text-secondary);
+.lang-switch i {
+  font-size: 18px;
+  transition: color 0.2s, opacity 0.2s;
 }
 
-.lang-sep {
-  margin: 0 4px;
-}
-
-.lang-switch.active .lang-en,
-.lang-switch.active .lang-zh {
+.lang-switch.active i {
   color: var(--text-primary);
-  font-weight: 600;
 }
 
 /* Main Content */
@@ -111,6 +111,56 @@ main {
   letter-spacing: 2px;
   margin-bottom: 32px;
   color: var(--text-primary);
+}
+
+/* Hide old CTA - replaced by arrow */
+/* 
+.hero-cta {
+  display: inline-block;
+  padding: 16px 48px;
+  font-size: 16px;
+  color: var(--text-primary);
+  text-decoration: none;
+  border: 1px solid var(--border-light);
+  transition: all 0.2s;
+}
+
+.hero-cta:hover {
+  background: var(--text-primary);
+  color: var(--bg-white);
+}
+*/
+
+/* Dynamic Arrow */
+
+/* Dynamic Arrow */
+.hero-arrow {
+  display: inline-block;
+  cursor: pointer;
+  padding: 16px;
+}
+
+.hero-arrow i {
+  font-size: 24px;
+  color: var(--text-secondary);
+  transition: color 0.2s;
+  animation: arrow-bounce 2s infinite;
+}
+
+.hero-arrow:hover i {
+  color: var(--text-primary);
+}
+
+@keyframes arrow-bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(10px);
+  }
+  60% {
+    transform: translateY(5px);
+  }
 }
 
 .hero-cta {

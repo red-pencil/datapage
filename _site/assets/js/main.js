@@ -47,8 +47,17 @@
     // Update lang switcher UI
     updateLangSwitcher();
     
-    // Add event listener
-    document.getElementById('lang-switch').addEventListener('click', toggleLanguage);
+    // Add event listener for language switch
+    const langBtn = document.getElementById('lang-switch');
+    if (langBtn) {
+      langBtn.addEventListener('click', toggleLanguage);
+    }
+    
+    // Add event listener for scroll arrow
+    const arrow = document.getElementById('hero-arrow');
+    if (arrow) {
+      arrow.addEventListener('click', scrollToProducts);
+    }
   }
 
   function toggleLanguage() {
@@ -60,19 +69,18 @@
 
   function updateLangSwitcher() {
     const btn = document.getElementById('lang-switch');
-    const enSpan = btn.querySelector('.lang-en');
-    const zhSpan = btn.querySelector('.lang-zh');
+    if (!btn) return;
     
-    if (currentLang === 'zh') {
-      enSpan.style.fontWeight = '400';
-      enSpan.style.color = '#666';
-      zhSpan.style.fontWeight = '600';
-      zhSpan.style.color = '#333';
-    } else {
-      enSpan.style.fontWeight = '600';
-      enSpan.style.color = '#333';
-      zhSpan.style.fontWeight = '400';
-      zhSpan.style.color = '#666';
+    // Toggle between globe (EN) and comments (ZH) icons
+    btn.innerHTML = currentLang === 'zh' 
+      ? '<i class="fa-solid fa-comments"></i>' 
+      : '<i class="fa-solid fa-globe"></i>';
+  }
+
+  function scrollToProducts() {
+    const products = document.getElementById('products');
+    if (products) {
+      products.scrollIntoView({ behavior: 'smooth' });
     }
   }
 
