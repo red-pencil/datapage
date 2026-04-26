@@ -101,6 +101,41 @@ body {
   background: var(--bg-light);
 }
 
+.media-switch {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-secondary);
+  padding: 8px;
+  border-radius: 4px;
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 36px;
+  z-index: 2000;
+  position: relative;
+}
+
+.media-switch:hover {
+  background: var(--bg-light);
+}
+
+.media-switch i {
+  font-size: 18px;
+}
+
+.media-switch:hover {
+  background: var(--bg-light);
+}
+
+.media-switch .media-icon {
+  font-size: 18px;
+  line-height: 1;
+  display: block;
+}
+
 .theme-switch i {
   font-size: 18px;
 }
@@ -201,13 +236,77 @@ main {
   text-align: center;
   padding: 24px;
   overflow: hidden;
+  position: relative;
 }
 
 .hero-content {
-  max-width: 90%;
+  max-width: calc(100% - 48px);
   padding: 0 20px;
   white-space: nowrap;
   margin: auto;
+  position: relative;
+  z-index: 1;
+}
+
+.hero.has-bg .hero-content {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.hero.has-bg .hero-title {
+  font-size: clamp(24px, 5vw, 36px);
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.hero.has-bg .hero-fixed {
+  min-width: 100px;
+}
+
+.hero.has-bg .word-carousel {
+  min-width: 120px;
+}
+
+.hero.has-bg .word-carousel .word {
+  width: 120px;
+}
+
+.hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  max-width: 100%;
+  max-height: 100%;
+  opacity: 0;
+  z-index: -1;
+}
+
+.hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  max-width: 100%;
+  max-height: 100%;
+  opacity: 0;
+  z-index: -1;
+}
+
+.hero-bg.active {
+  opacity: 1;
+}
+
+.hero-video.active {
+  opacity: 1;
 }
 
 .hero-title {
@@ -235,13 +334,21 @@ main {
   height: 1.2em;
 }
 
-.word-carousel .word {
+.word-carousel {
   display: inline-block;
+  position: relative;
+  text-align: left;
+  min-width: 220px;
+  height: 1.2em;
+}
+
+.word-carousel .word {
+  display: block;
   position: absolute;
   left: 0;
+  top: 0;
   width: 220px;
-  text-align: left;
-  transition: all 0.5s ease;
+  transition: all 0.8s ease;
 }
 
 .word-carousel .word.active {
@@ -396,8 +503,9 @@ main {
   }
   
   .hero-content {
-    padding: 0 16px;
-    max-width: 100%;
+    max-width: 90%;
+    padding: 0 20px;
+    margin: auto;
   }
   
   .hero-title {
@@ -417,37 +525,36 @@ main {
     display: inline-block;
     position: relative;
     text-align: center;
-    min-width: 150px;
+    min-width: 180px;
     height: 1.2em;
   }
   
   .word-carousel .word {
     position: absolute;
-    left: 0;
-    right: 0;
-    margin: 0 auto;
-    width: 150px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 180px;
     text-align: center;
-transition: all 0.8s ease;
+    transition: all 0.8s ease;
   }
   
   .word-carousel .word.active {
-    transform: translateY(0);
+    transform: translateX(-50%) translateY(0);
     opacity: 1;
   }
   
   .word-carousel .word.inactive {
-    transform: translateY(-100%);
+    transform: translateX(-50%) translateY(-100%);
     opacity: 0;
   }
   
   .word-carousel .word.slide-out {
-    transform: translateY(100%);
+    transform: translateX(-50%) translateY(100%);
     opacity: 0;
   }
   
   .word-carousel .word.slide-in {
-    transform: translateY(0);
+    transform: translateX(-50%) translateY(0);
     opacity: 1;
   }
 }

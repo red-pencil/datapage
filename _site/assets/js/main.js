@@ -1,7 +1,6 @@
 // RDV - Language Switcher + Word Carousel
 
 (function() {
-  // Translations
   var i18n = {
     zh: {
       heroTitleFixed: "数据赋能",
@@ -34,9 +33,10 @@
   var currentLang = 'en';
   var wordIndex = 0;
   var wordInterval = null;
+  var mediaModes = ['image', 'video', 'none'];
+  var currentMediaIndex = 0;
 
   function init() {
-    // Detect browser language
     var savedLang = localStorage.getItem('rdv-lang');
     if (savedLang) {
       currentLang = savedLang;
@@ -44,28 +44,17 @@
       currentLang = navigator.language && navigator.language.startsWith('zh') ? 'zh' : 'en';
     }
     
-    // Apply translations
     applyTranslations();
-    
-    // Start word carousel
     startWordCarousel();
-    
-    // Update lang switcher UI
     updateLangSwitcher();
-    
-    // Init theme
     initTheme();
-    
-    // Init header scroll effect
     initHeaderScroll();
     
-    // Add event listener for language switch button
     var langBtn = document.getElementById('lang-switch');
     if (langBtn) {
       langBtn.addEventListener('click', toggleLangMenu);
     }
     
-    // Add event listeners for language options
     var options = document.querySelectorAll('.lang-option');
     for (var i = 0; i < options.length; i++) {
       options[i].addEventListener('click', function(e) {
@@ -80,7 +69,6 @@
       });
     }
     
-    // Close menu when clicking outside
     document.addEventListener('click', function(e) {
       var dropdown = document.querySelector('.lang-dropdown');
       if (dropdown && !dropdown.contains(e.target)) {
@@ -88,11 +76,23 @@
       }
     });
     
-    // Add event listener for scroll arrow
     var arrow = document.getElementById('hero-arrow');
     if (arrow) {
       arrow.addEventListener('click', scrollToProducts);
     }
+
+    var mediaBtn = document.getElementById('media-switch');
+    if (mediaBtn) {
+      mediaBtn.onclick = function() {
+        cycleMedia();
+      };
+    }
+
+    document.onkeydown = function(e) {
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+        cycleMedia();
+      }
+    };
   }
 
   function toggleLangMenu(e) {
@@ -140,25 +140,56 @@
     setTheme(newTheme);
   }
 
+  function cycleMedia() {
+    var hero = document.getElementById('hero');
+    var bg = document.getElementById('hero-bg');
+    var video = document.getElementById('hero-video');
+    var mediaBtn = document.getElementById('media-switch');
+    
+    currentMediaIndex = (currentMediaIndex + 1) % mediaModes.length;
+    var mode = mediaModes[currentMediaIndex];
+    
+    if (bg) bg.classList.remove('active');
+    if (video) video.classList.remove('active');
+    
+    if (mode === 'image' && bg) {
+      bg.classList.add('active');
+      hero.classList.add('has-bg');
+    } else if (mode === 'video' && video) {
+      video.classList.add('active');
+      hero.classList.add('has-bg');
+    } else {
+      hero.classList.remove('has-bg');
+    }
+    
+    if (mediaBtn) {
+      var icon = mediaBtn.querySelector('i');
+      if (icon) {
+        if (mode === 'image') icon.className = 'fa-solid fa-image';
+        else if (mode === 'video') icon.className = 'fa-solid fa-video';
+        else icon.className = 'fa-solid fa-square';
+      }
+    }
+  }
+
   function initHeaderScroll() {
     var header = document.querySelector('.site-header');
     if (!header) return;
     
     function getBgColor() {
       var theme = document.documentElement.getAttribute('data-theme');
-      return theme === 'dark' ? '26, 26, 26' : '255, 255, 255'; // #1a1a1a or #ffffff
+      return theme === 'dark' ? '26, 26, 26' : '255, 255, 255';
     }
     
     function getBorderColor() {
       var theme = document.documentElement.getAttribute('data-theme');
-      return theme === 'dark' ? '51, 51, 51' : '229, 229, 229'; // #333333 or #e5e5e5
+      return theme === 'dark' ? '51, 51, 51' : '229, 229, 229';
     }
     
     window.addEventListener('scroll', function() {
       var scrollY = window.pageYOffset || document.documentElement.scrollTop;
-      var threshold = window.innerHeight * 0.5; // 50vh
+      var threshold = window.innerHeight * 0.5;
       
-      // Calculate opacity: 0 at top, 1 at 50vh
       var opacity = Math.min(scrollY / threshold, 1);
       
       var bgColor = getBgColor();
@@ -170,20 +201,17 @@
   }
 
   function startWordCarousel() {
-    // Stop existing interval
     if (wordInterval) {
       clearInterval(wordInterval);
     }
     
-    // Set initial word
     wordIndex = 0;
     updateCarouselWords();
     
-    // Start interval - 3 seconds
-    wordInterval = setInterval(rotateWord, 4000);
+    wordInterval = setInterval(rotateWord, 3000);
   }
 
-function rotateWord() {
+  function rotateWord() {
     var words = i18n[currentLang].heroTitleWords;
     if (!words || words.length === 0) return;
     
@@ -224,7 +252,6 @@ function rotateWord() {
   }
 
   function updateLangSwitcher() {
-    // Update active state in menu
     var options = document.querySelectorAll('.lang-option');
     for (var i = 0; i < options.length; i++) {
       if (options[i].getAttribute('data-lang') === currentLang) {
@@ -234,7 +261,6 @@ function rotateWord() {
       }
     }
     
-    // Restart carousel with new language
     startWordCarousel();
   }
 
@@ -249,17 +275,14 @@ function rotateWord() {
     var t = i18n[currentLang];
     if (!t) return;
 
-    // Hero fixed part
     var heroFixed = document.querySelector('.hero-fixed');
     if (heroFixed && t.heroTitleFixed) {
       heroFixed.textContent = t.heroTitleFixed;
     }
 
-    // Update carousel words
     wordIndex = 0;
     updateCarouselWords();
 
-    // Products
     var productItems = document.querySelectorAll('.product-item');
     for (var i = 0; i < t.products.length; i++) {
       if (productItems[i]) {
@@ -270,7 +293,6 @@ function rotateWord() {
       }
     }
 
-    // Footer
     var contactTitle = document.querySelector('.footer-title');
     if (contactTitle) contactTitle.textContent = t.contact;
 
@@ -278,7 +300,6 @@ function rotateWord() {
     if (copyright) copyright.textContent = t.footerCopyright;
   }
 
-  // Run on DOM ready
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
   } else {
