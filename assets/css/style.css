@@ -207,13 +207,13 @@ main {
   max-width: 90%;
   padding: 0 20px;
   white-space: nowrap;
+  margin: auto;
 }
 
 .hero-title {
   font-size: clamp(32px, 6vw, 48px);
   font-weight: 300;
   letter-spacing: 2px;
-  margin-bottom: 32px;
   color: var(--text-primary);
   display: flex;
   justify-content: center;
@@ -397,6 +397,7 @@ main {
   
   .hero-content {
     padding: 0 16px;
+    max-width: 100%;
   }
   
   .hero-title {
@@ -404,26 +405,50 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 8px;
   }
   
   .hero-fixed {
     display: inline-block;
-    width: auto;
     text-align: center;
   }
   
   .word-carousel {
     display: inline-block;
     position: relative;
-    width: 150px;
     text-align: center;
+    min-width: 150px;
+    height: 1.2em;
   }
   
   .word-carousel .word {
-    position: static;
-    width: auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 150px;
     text-align: center;
-    transform: none;
+transition: all 0.8s ease;
+  }
+  
+  .word-carousel .word.active {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  
+  .word-carousel .word.inactive {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  
+  .word-carousel .word.slide-out {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  
+  .word-carousel .word.slide-in {
+    transform: translateY(0);
+    opacity: 1;
   }
 }
 

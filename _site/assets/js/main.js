@@ -180,7 +180,7 @@
     updateCarouselWords();
     
     // Start interval - 3 seconds
-    wordInterval = setInterval(rotateWord, 3000);
+    wordInterval = setInterval(rotateWord, 4000);
   }
 
 function rotateWord() {
@@ -209,7 +209,7 @@ function rotateWord() {
       nextEl.classList.add('active');
       
       wordIndex = nextIndex;
-    }, 500);
+    }, 800);
   }
 
   function updateCarouselWords() {
