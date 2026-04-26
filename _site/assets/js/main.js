@@ -1,10 +1,11 @@
-// RDV - Language Switcher (Auto-detect + Manual)
+// RDV - Language Switcher + Word Carousel
 
 (function() {
-  //Translations
-  const i18n = {
+  // Translations
+  var i18n = {
     zh: {
-      heroTitle: "数据赋能具身智能",
+      heroTitleFixed: "数据赋能",
+      heroTitleWords: ["具身智能", "物理智能", "人工智能", "机器人", "一切", "未来"],
       cta: "了解更多",
       products: [
         { title: "数据采集", desc: "高效采集机器人设备数据，支持多种协议和格式" },
@@ -16,7 +17,8 @@
       footerCopyright: "© 2025 RDV. 保留所有权利。"
     },
     en: {
-      heroTitle: "Ego data for Robot",
+      heroTitleFixed: "Data Fuels",
+      heroTitleWords: ["Physical AI", "Embodied AI", "Humanoid", "AI", "All", "Future"],
       cta: "Learn More",
       products: [
         { title: "Data Collection", desc: "Efficiently collect robot device data with multi-protocol support" },
@@ -29,12 +31,13 @@
     }
   };
 
-  let currentLang = 'en';
+  var currentLang = 'en';
+  var wordIndex = 0;
+  var wordInterval = null;
 
-  //Init
   function init() {
-    //Detect browser language
-    const savedLang = localStorage.getItem('rdv-lang');
+    // Detect browser language
+    var savedLang = localStorage.getItem('rdv-lang');
     if (savedLang) {
       currentLang = savedLang;
     } else {
@@ -44,40 +47,43 @@
     // Apply translations
     applyTranslations();
     
+    // Start word carousel
+    startWordCarousel();
+    
     // Update lang switcher UI
     updateLangSwitcher();
     
     // Add event listener for language switch button
-    const langBtn = document.getElementById('lang-switch');
+    var langBtn = document.getElementById('lang-switch');
     if (langBtn) {
       langBtn.addEventListener('click', toggleLangMenu);
     }
     
     // Add event listeners for language options
-    document.querySelectorAll('.lang-option').forEach(option => {
-      option.addEventListener('click', function(e) {
-        const lang = this.getAttribute('data-lang');
+    var options = document.querySelectorAll('.lang-option');
+    for (var i = 0; i < options.length; i++) {
+      options[i].addEventListener('click', function(e) {
+        var lang = this.getAttribute('data-lang');
         if (lang && lang !== currentLang) {
           currentLang = lang;
           localStorage.setItem('rdv-lang', currentLang);
           applyTranslations();
           updateLangSwitcher();
         }
-        // Close menu after selection
         closeLangMenu();
       });
-    });
+    }
     
     // Close menu when clicking outside
     document.addEventListener('click', function(e) {
-      const dropdown = document.querySelector('.lang-dropdown');
+      var dropdown = document.querySelector('.lang-dropdown');
       if (dropdown && !dropdown.contains(e.target)) {
         closeLangMenu();
       }
     });
     
     // Add event listener for scroll arrow
-    const arrow = document.getElementById('hero-arrow');
+    var arrow = document.getElementById('hero-arrow');
     if (arrow) {
       arrow.addEventListener('click', scrollToProducts);
     }
@@ -85,64 +91,133 @@
 
   function toggleLangMenu(e) {
     e.stopPropagation();
-    const menu = document.getElementById('lang-menu');
+    var menu = document.getElementById('lang-menu');
     if (menu) {
       menu.classList.toggle('show');
     }
   }
 
   function closeLangMenu() {
-    const menu = document.getElementById('lang-menu');
+    var menu = document.getElementById('lang-menu');
     if (menu) {
       menu.classList.remove('show');
     }
   }
 
+  function startWordCarousel() {
+    // Stop existing interval
+    if (wordInterval) {
+      clearInterval(wordInterval);
+    }
+    
+    // Set initial word
+    wordIndex = 0;
+    updateCarouselWords();
+    
+    // Start interval - 3 seconds
+    wordInterval = setInterval(rotateWord, 3000);
+  }
+
+function rotateWord() {
+    var words = i18n[currentLang].heroTitleWords;
+    if (!words || words.length === 0) return;
+    
+    var currentEl = document.querySelector('.word-carousel .word.active');
+    var nextEl = document.querySelector('.word-carousel .word.inactive');
+    
+    if (!currentEl || !nextEl) return;
+    
+    // Calculate next index
+    var nextIndex = (wordIndex + 1) % words.length;
+    
+    // Set next word text to the upcoming word
+    nextEl.textContent = words[nextIndex];
+    
+    // Trigger animation
+    currentEl.classList.add('slide-up');
+    nextEl.classList.add('slide-down');
+    
+    // After animation (500ms), finalize the swap
+    setTimeout(function() {
+      // Remove animation classes
+      currentEl.classList.remove('slide-up');
+      nextEl.classList.remove('slide-down');
+      
+      // Swap which element is active/inactive by swapping classes
+      currentEl.classList.remove('active');
+      currentEl.classList.add('inactive');
+      
+      nextEl.classList.remove('inactive');
+      nextEl.classList.add('active');
+      
+      // Update word index
+      wordIndex = nextIndex;
+    }, 500);
+  }
+
+  function updateCarouselWords() {
+    var words = i18n[currentLang].heroTitleWords;
+    if (!words) return;
+    
+    var currentEl = document.querySelector('.word-carousel .word.current');
+    var nextEl = document.querySelector('.word-carousel .word.next');
+    
+    if (currentEl) currentEl.textContent = words[wordIndex];
+    if (nextEl) nextEl.textContent = words[(wordIndex + 1) % words.length];
+  }
+
   function updateLangSwitcher() {
     // Update active state in menu
-    document.querySelectorAll('.lang-option').forEach(option => {
-      if (option.getAttribute('data-lang') === currentLang) {
-        option.classList.add('active');
+    var options = document.querySelectorAll('.lang-option');
+    for (var i = 0; i < options.length; i++) {
+      if (options[i].getAttribute('data-lang') === currentLang) {
+        options[i].classList.add('active');
       } else {
-        option.classList.remove('active');
+        options[i].classList.remove('active');
       }
-    });
+    }
+    
+    // Restart carousel with new language
+    startWordCarousel();
   }
 
   function scrollToProducts() {
-    const products = document.getElementById('products');
+    var products = document.getElementById('products');
     if (products) {
       products.scrollIntoView({ behavior: 'smooth' });
     }
   }
 
   function applyTranslations() {
-    const t = i18n[currentLang];
+    var t = i18n[currentLang];
     if (!t) return;
 
-    // Hero
-    const heroTitle = document.getElementById('hero-title');
-    if (heroTitle) heroTitle.textContent = t.heroTitle;
+    // Hero fixed part
+    var heroFixed = document.querySelector('.hero-fixed');
+    if (heroFixed && t.heroTitleFixed) {
+      heroFixed.textContent = t.heroTitleFixed;
+    }
 
-    const heroCta = document.querySelector('.hero-cta');
-    if (heroCta) heroCta.textContent = t.cta;
+    // Update carousel words
+    wordIndex = 0;
+    updateCarouselWords();
 
     // Products
-    const productItems = document.querySelectorAll('.product-item');
-    t.products.forEach((p, index) => {
-      if (productItems[index]) {
-        const titleEl = productItems[index].querySelector('.product-title');
-        const descEl = productItems[index].querySelector('.product-desc');
-        if (titleEl) titleEl.textContent = p.title;
-        if (descEl) descEl.textContent = p.desc;
+    var productItems = document.querySelectorAll('.product-item');
+    for (var i = 0; i < t.products.length; i++) {
+      if (productItems[i]) {
+        var titleEl = productItems[i].querySelector('.product-title');
+        var descEl = productItems[i].querySelector('.product-desc');
+        if (titleEl) titleEl.textContent = t.products[i].title;
+        if (descEl) descEl.textContent = t.products[i].desc;
       }
-    });
+    }
 
     // Footer
-    const contactTitle = document.querySelector('.footer-title');
+    var contactTitle = document.querySelector('.footer-title');
     if (contactTitle) contactTitle.textContent = t.contact;
 
-    const copyright = document.querySelector('.footer-copyright');
+    var copyright = document.querySelector('.footer-copyright');
     if (copyright) copyright.textContent = t.footerCopyright;
   }
 

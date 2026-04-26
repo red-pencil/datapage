@@ -163,6 +163,89 @@ main {
   letter-spacing: 2px;
   margin-bottom: 32px;
   color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-fixed {
+  display: inline-block;
+  white-space: nowrap;
+  text-align: right;
+}
+
+.title-left {
+  padding-right: 50%;
+  text-align: right;
+}
+
+.title-right {
+  padding-left: 50%;
+  text-align: left;
+}
+
+/* Word Carousel */
+.word-carousel {
+  display: inline-block;
+  min-width: 150px;
+  height: 1.2em;
+  overflow: hidden;
+  vertical-align: middle;
+}
+
+.word-carousel .word {
+  display: inline-block;
+  height: 1.2em;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* States */
+.word-carousel .word.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.word-carousel .word.inactive {
+  opacity: 0;
+  transform: translateY(100%);
+}
+
+/* Animation states */
+.word-carousel .word.slide-up {
+  opacity: 0;
+  transform: translateY(-100%);
+}
+
+.word-carousel .word.slide-down {
+  opacity: 0;
+  transform: translateY(100%);
+}
+
+.word-carousel .word {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.word-carousel .word.current {
+  opacity: 1;
+}
+
+.word-carousel .word.next {
+  transform: translateX(-50%) translateY(100%);
+  opacity: 0;
+}
+
+.word-carousel .word.slide-out {
+  transform: translateX(-50%) translateY(-100%);
+  opacity: 0;
+}
+
+.word-carousel .word.slide-in {
+  transform: translateX(-50%) translateY(100%);
+  opacity: 0;
 }
 
 /* Hide old CTA - replaced by arrow */
