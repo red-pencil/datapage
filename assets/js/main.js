@@ -56,6 +56,9 @@
     // Init theme
     initTheme();
     
+    // Init header scroll effect
+    initHeaderScroll();
+    
     // Add event listener for language switch button
     var langBtn = document.getElementById('lang-switch');
     if (langBtn) {
@@ -135,6 +138,35 @@
     var currentTheme = document.documentElement.getAttribute('data-theme');
     var newTheme = currentTheme === 'dark' ? 'light' : 'dark';
     setTheme(newTheme);
+  }
+
+  function initHeaderScroll() {
+    var header = document.querySelector('.site-header');
+    if (!header) return;
+    
+    function getBgColor() {
+      var theme = document.documentElement.getAttribute('data-theme');
+      return theme === 'dark' ? '26, 26, 26' : '255, 255, 255'; // #1a1a1a or #ffffff
+    }
+    
+    function getBorderColor() {
+      var theme = document.documentElement.getAttribute('data-theme');
+      return theme === 'dark' ? '51, 51, 51' : '229, 229, 229'; // #333333 or #e5e5e5
+    }
+    
+    window.addEventListener('scroll', function() {
+      var scrollY = window.pageYOffset || document.documentElement.scrollTop;
+      var threshold = window.innerHeight * 0.5; // 50vh
+      
+      // Calculate opacity: 0 at top, 1 at 50vh
+      var opacity = Math.min(scrollY / threshold, 1);
+      
+      var bgColor = getBgColor();
+      var borderColor = getBorderColor();
+      
+      header.style.background = 'rgba(' + bgColor + ', ' + opacity + ')';
+      header.style.borderBottomColor = 'rgba(' + borderColor + ', ' + opacity + ')';
+    }, { passive: true });
   }
 
   function startWordCarousel() {
