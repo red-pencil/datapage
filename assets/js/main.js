@@ -196,19 +196,18 @@ function rotateWord() {
     nextEl.textContent = words[nextIndex];
     
     currentEl.classList.remove('active');
-    currentEl.classList.add('slide-up');
+    currentEl.classList.add('slide-out');
     
-    nextEl.classList.add('slide-down');
-    
-    setTimeout(function() {
-      nextEl.classList.remove('slide-down');
-      nextEl.classList.remove('inactive');
-      nextEl.classList.add('active');
-    }, 50);
+    nextEl.classList.remove('inactive');
+    nextEl.classList.add('slide-in');
     
     setTimeout(function() {
-      currentEl.classList.remove('slide-up');
+      currentEl.classList.remove('slide-out');
       currentEl.classList.add('inactive');
+      
+      nextEl.classList.remove('slide-in');
+      nextEl.classList.add('active');
+      
       wordIndex = nextIndex;
     }, 500);
   }
