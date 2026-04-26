@@ -1,0 +1,25 @@
+title: RDV
+description: Ego data for Robot
+url: https://rdv.example.com
+baseurl: ""
+lang: en
+
+# Minima theme
+theme: minima
+
+# Build settings
+markdown: kramdown
+permalink: pretty
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
