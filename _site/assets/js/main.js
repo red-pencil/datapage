@@ -75,6 +75,8 @@
   var wordInterval = null;
   var mediaModes = ['image', 'video', 'none'];
   var currentMediaIndex = 0;
+  var headerTimeout = null;
+  var headerActions = null;
 
   function init() {
     var savedLang = localStorage.getItem('rdv-lang');
@@ -136,6 +138,28 @@
         cycleMedia();
       }
     };
+
+    headerActions = document.querySelector('.header-actions');
+    resetHeaderTimer();
+
+    document.addEventListener('mousemove', resetHeaderTimer);
+    document.addEventListener('click', resetHeaderTimer);
+    document.addEventListener('scroll', resetHeaderTimer);
+    document.addEventListener('touchstart', resetHeaderTimer);
+  }
+
+  function resetHeaderTimer() {
+    if (headerActions) {
+      headerActions.classList.remove('hidden');
+    }
+    if (headerTimeout) {
+      clearTimeout(headerTimeout);
+    }
+    headerTimeout = setTimeout(function() {
+      if (headerActions) {
+        headerActions.classList.add('hidden');
+      }
+    }, 3000);
   }
 
   function toggleLangMenu(e) {
@@ -228,7 +252,7 @@
       if (icon) {
         if (mode === 'image') icon.className = 'fa-solid fa-image';
         else if (mode === 'video') icon.className = 'fa-solid fa-video';
-        else icon.className = 'fa-solid fa-square';
+        else icon.className = 'fa-solid fa-house';
       }
     }
   }
