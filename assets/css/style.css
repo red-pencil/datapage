@@ -480,12 +480,10 @@ main {
 
 .hero.has-bg .hero-fixed-container {
   text-align: right;
-  padding-right: 12px;
 }
 
 .hero.has-bg .hero-carousel-container {
   text-align: left;
-  padding-left: 12px;
 }
 
 .hero.has-bg .word-carousel {
@@ -548,7 +546,6 @@ main {
 .hero-fixed-container {
   width: 50%;
   text-align: right;
-  padding-right: 16px;
 }
 
 .hero-fixed {
@@ -560,7 +557,6 @@ main {
 .hero-carousel-container {
   width: 50%;
   text-align: left;
-  padding-left: 16px;
 }
 
 .word-carousel {
@@ -766,16 +762,6 @@ main {
   text-align: center;
 }
 
-/* Mobile Footer */
-@media (max-width: 767px) {
-  .footer-contact {
-    flex-direction: column;
-    align-items: center;
-    gap: 16px;
-  }
-}
-}
-
 /* Mobile Responsive */
 @media (max-width: 767px) {
   .hero {
@@ -796,17 +782,22 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.5em;
+    justify-content: center;
+    width: 100%;
   }
   
   .hero-fixed-container {
     width: 100%;
     text-align: center;
+    display: flex;
+    justify-content: center;
   }
   
   .hero-carousel-container {
     width: 100%;
     text-align: center;
+    display: flex;
+    justify-content: center;
   }
   
   .hero-fixed {
@@ -849,6 +840,47 @@ main {
   .word-carousel .word.slide-in {
     transform: translateX(-50%) translateY(0);
     opacity: 1;
+  }
+}
+
+/* Mobile + has-bg (image/video) mode */
+@media (max-width: 767px) {
+  .hero.has-bg .hero-title {
+    justify-content: center;
+    gap: 0;
+  }
+  
+  .hero.has-bg .hero-fixed-container {
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .hero.has-bg .hero-carousel-container {
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .hero.has-bg .word-carousel .word {
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+    white-space: nowrap;
+  }
+  
+  .hero.has-bg .word-carousel .word.active {
+    transform: translateX(-50%) translateY(0);
+  }
+  
+  .hero.has-bg .word-carousel .word.inactive {
+    transform: translateX(-50%) translateY(-100%);
+  }
+  
+  .hero.has-bg .word-carousel .word.slide-out {
+    transform: translateX(-50%) translateY(100%);
   }
 }
 
