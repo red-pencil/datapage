@@ -669,6 +669,10 @@ main {
   margin-top: 24px;
 }
 
+.hero.has-bg .hero-arrow {
+  margin-top: 0;
+}
+
 .hero-arrow i {
   font-size: 24px;
   color: var(--text-secondary);
@@ -967,6 +971,8 @@ main {
     position: relative;
     width: 100%;
     text-align: center;
+    height: 2em;
+    flex: 0 0 auto;
   }
   
   .hero.has-bg .hero-fixed {
@@ -981,6 +987,8 @@ main {
     display: block;
     width: 100%;
     text-align: center;
+    height: 2em;
+    flex: 0 0 auto;
   }
   
   .hero.has-bg .word-carousel {
