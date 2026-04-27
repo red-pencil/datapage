@@ -479,7 +479,32 @@ main {
 }
 
 .hero.has-bg .hero-fixed-container {
-  text-align: right;
+  position: relative;
+  width: 100pt;
+  flex: 1 1 0;
+  height: 1em;
+}
+
+.hero.has-bg .hero-carousel-container {
+  position: relative;
+  width: 100pt;
+  flex: 1 1 0;
+  height: 1em;
+}
+
+.hero.has-bg .hero-fixed {
+  position: absolute;
+  right: 0;
+}
+
+.hero.has-bg .word-carousel {
+  position: absolute;
+  left: 0;
+}
+
+.hero.has-bg .word-carousel .word {
+  position: absolute;
+  left: 0;
 }
 
 .hero.has-bg .hero-carousel-container {
@@ -538,33 +563,35 @@ main {
   letter-spacing: 2px;
   color: var(--text-primary);
   display: flex;
-  justify-content: space-between;
   align-items: baseline;
   gap: 0.5em;
+  width: 100%;
 }
 
 .hero-fixed-container {
-  width: 50%;
+  flex: 1 1 0;
+  width: 100pt;
   text-align: right;
+  position: relative;
+  height: 1em;
 }
 
 .hero-fixed {
-  display: inline-block;
-  text-align: right;
-  min-width: 140px;
+  position: absolute;
+  right: 0;
 }
 
 .hero-carousel-container {
-  width: 50%;
+  flex: 1 1 0;
+  width: 100pt;
   text-align: left;
+  position: relative;
+  height: 1em;
 }
 
 .word-carousel {
-  display: inline-block;
-  position: relative;
-  text-align: left;
-  min-width: 220px;
-  height: 1.2em;
+  position: absolute;
+  left: 0;
 }
 
 .word-carousel .word {
@@ -572,7 +599,6 @@ main {
   position: absolute;
   left: 0;
   top: 0;
-  width: 220px;
   text-align: left;
   transition: all 0.8s ease;
 }
@@ -786,36 +812,35 @@ main {
     width: 100%;
   }
   
-  .hero-fixed-container {
+.hero-fixed-container {
     width: 100%;
-    text-align: center;
-    display: flex;
-    justify-content: center;
+    position: relative;
+    flex: 0 0 auto;
+    height: 1em;
   }
   
   .hero-carousel-container {
     width: 100%;
-    text-align: center;
-    display: flex;
-    justify-content: center;
+    position: relative;
+    flex: 0 0 auto;
+    height: 1em;
   }
   
   .hero-fixed {
-    display: inline-block;
-    text-align: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
   }
   
   .word-carousel {
-    display: inline-block;
-    position: relative;
-    text-align: center;
-    height: 1.2em;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
   }
   
   .word-carousel .word {
     position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 0;
     top: 0;
     white-space: nowrap;
     text-align: center;
@@ -852,27 +877,27 @@ main {
   
   .hero.has-bg .hero-fixed-container {
     width: 100%;
-    text-align: center;
-    display: flex;
-    justify-content: center;
+    position: relative;
+    flex: 0 0 auto;
+    height: 1em;
   }
   
   .hero.has-bg .hero-carousel-container {
     width: 100%;
-    text-align: center;
-    display: flex;
-    justify-content: center;
+    position: relative;
+    flex: 0 0 auto;
+    height: 1em;
   }
   
   .hero.has-bg .word-carousel .word {
-    left: 50%;
-    transform: translateX(-50%);
+    left: 0;
+    transform: none;
     width: auto;
     white-space: nowrap;
   }
   
   .hero.has-bg .word-carousel .word.active {
-    transform: translateX(-50%) translateY(0);
+    transform: none;
   }
   
   .hero.has-bg .word-carousel .word.inactive {
