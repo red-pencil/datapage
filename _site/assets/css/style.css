@@ -468,25 +468,32 @@ main {
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
+  width: 100%;
 }
 
 .hero.has-bg .hero-title {
   font-size: clamp(24px, 5vw, 36px);
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: baseline;
 }
 
-.hero.has-bg .hero-fixed {
-  min-width: 100px;
+.hero.has-bg .hero-fixed-container {
+  text-align: right;
+  padding-right: 12px;
+}
+
+.hero.has-bg .hero-carousel-container {
+  text-align: left;
+  padding-left: 12px;
 }
 
 .hero.has-bg .word-carousel {
-  min-width: 120px;
+  min-width: 100px;
 }
 
 .hero.has-bg .word-carousel .word {
-  width: 120px;
+  width: 100px;
 }
 
 .hero-bg {
@@ -539,9 +546,9 @@ main {
 }
 
 .hero-fixed-container {
-  flex: 1 1 0;
-  min-width: 0;
+  width: 50%;
   text-align: right;
+  padding-right: 16px;
 }
 
 .hero-fixed {
@@ -551,9 +558,9 @@ main {
 }
 
 .hero-carousel-container {
-  flex: 1 1 0;
-  min-width: 0;
+  width: 50%;
   text-align: left;
+  padding-left: 16px;
 }
 
 .word-carousel {
@@ -697,26 +704,76 @@ main {
 .footer-inner {
   max-width: 1200px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
 }
 
-.footer-title {
-  font-size: 16px;
-  font-weight: 500;
-  margin-bottom: 16px;
+.footer-contact {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 32px;
 }
 
-.footer-text {
+.footer-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   font-size: 14px;
   color: var(--text-secondary);
-  margin-bottom: 8px;
+}
+
+.footer-contact-item i {
+  font-size: 16px;
+  color: var(--text-secondary);
+  width: 20px;
+  text-align: center;
+}
+
+.footer-contact-item a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-contact-item a:hover {
+  color: var(--text-primary);
+}
+
+.footer-social {
+  display: flex;
+  gap: 20px;
+}
+
+.footer-social a {
+  font-size: 20px;
+  color: var(--text-secondary);
+  transition: color 0.2s ease;
+}
+
+.footer-social a:hover {
+  color: var(--text-primary);
 }
 
 .footer-copyright {
-  margin-top: 32px;
   padding-top: 24px;
   border-top: 1px solid var(--border-light);
   font-size: 12px;
   color: var(--text-secondary);
+  width: 100%;
+  text-align: center;
+}
+
+/* Mobile Footer */
+@media (max-width: 767px) {
+  .footer-contact {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+}
 }
 
 /* Mobile Responsive */

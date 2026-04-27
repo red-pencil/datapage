@@ -37,7 +37,7 @@
     <section class="hero" id="hero">
   <img class="hero-bg hero-bg-light" id="hero-bg-light" src="/assets/hero/light/humanoidlearn.jpg" alt="Hero Background Light">
   <img class="hero-bg hero-bg-dark" id="hero-bg-dark" src="/assets/hero/dark/humanoidlearn dark.jpg" alt="Hero Background Dark">
-  <video class="hero-bg hero-video" id="hero-video" src="/assets/hero/light/humanoidlearnvideo1.mp4" loop autoplay></video>
+  <video class="hero-bg hero-video" id="hero-video" src="/assets/hero/light/humanoidlearnvideo1.mp4" playsinline muted loop autoplay></video>
   <div class="hero-content">
     <h1 class="hero-title" id="hero-title">
       <span class="hero-fixed-container">
@@ -165,13 +165,27 @@
   
   <footer class="site-footer">
   <div class="footer-inner">
-    <div class="footer-section">
-      <h3 class="footer-title" data-i18n="contact">Contact</h3>
-      <p class="footer-text">RDV</p>
-      <p class="footer-text">Email: hello@rdv.example.com</p>
+    <div class="footer-contact">
+      <div class="footer-contact-item">
+        <i class="fa-solid fa-envelope"></i>
+        <a href="mailto:becky@rdv.bot" data-i18n="footerEmail">becky@rdv.bot</a>
+      </div>
+      <div class="footer-contact-item">
+        <i class="fa-solid fa-phone"></i>
+        <a href="tel:+1234567890" data-i18n="footerPhone">+1 234 567 890</a>
+      </div>
+      <div class="footer-contact-item">
+        <i class="fa-solid fa-location-dot"></i>
+        <span data-i18n="footerAddress">San Francisco, CA, USA</span>
+      </div>
+    </div>
+    <div class="footer-social">
+      <a href="https://linkedin.com" target="_blank" rel="noopener" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+      <a href="https://twitter.com" target="_blank" rel="noopener" title="X/Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+      <a href="https://github.com" target="_blank" rel="noopener" title="GitHub"><i class="fa-brands fa-github"></i></a>
     </div>
     <div class="footer-copyright">
-      <span>&copy; 2025 RDV. All rights reserved.</span>
+      <span data-i18n="footerCopyright">© 2025 RDV. All rights reserved.</span>
     </div>
   </div>
 </footer>

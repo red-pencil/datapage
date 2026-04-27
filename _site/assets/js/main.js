@@ -33,6 +33,9 @@
       readMore: "阅读全文 →",
       blogTitle: "博客",
       contact: "联系我们",
+      footerEmail: "becky@rdv.bot",
+      footerPhone: "+1 234 567 890",
+      footerAddress: "美国加利福尼亚州旧金山",
       footerCopyright: "© 2025 RDV. 保留所有权利。"
     },
     en: {
@@ -66,6 +69,9 @@
       readMore: "Read More →",
       blogTitle: "Blog",
       contact: "Contact",
+      footerEmail: "becky@rdv.bot",
+      footerPhone: "+1 234 567 890",
+      footerAddress: "San Francisco, CA, USA",
       footerCopyright: "© 2025 RDV. All rights reserved."
     }
   };
