@@ -238,10 +238,21 @@ main {
 }
 
 .section-title {
-  font-size: 32px;
+  font-size: 16px;
   font-weight: 500;
-  margin-bottom: 48px;
+  margin-bottom: 24px;
   text-align: center;
+  color: var(--text-primary);
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 24px;
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.back-link:hover {
   color: var(--text-primary);
 }
 
@@ -560,7 +571,7 @@ main {
 .hero-title {
   font-size: clamp(32px, 6vw, 48px);
   font-weight: 300;
-  letter-spacing: 2px;
+  letter-spacing: 0.5px;
   color: var(--text-primary);
   display: flex;
   align-items: baseline;
@@ -648,6 +659,7 @@ main {
   display: inline-block;
   cursor: pointer;
   padding: 16px;
+  margin-top: 24px;
 }
 
 .hero-arrow i {
@@ -826,10 +838,12 @@ main {
     height: 1em;
   }
   
-  .hero-fixed {
+.hero-fixed {
     position: absolute;
     left: 50%;
+    right: auto;
     transform: translateX(-50%);
+    white-space: nowrap;
   }
   
   .word-carousel {
@@ -871,29 +885,41 @@ main {
 /* Mobile + has-bg (image/video) mode */
 @media (max-width: 767px) {
   .hero.has-bg .hero-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
     gap: 0;
   }
   
   .hero.has-bg .hero-fixed-container {
-    width: 100%;
     position: relative;
-    flex: 0 0 auto;
-    height: 1em;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .hero.has-bg .hero-fixed {
+    position: absolute;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    white-space: nowrap;
   }
   
   .hero.has-bg .hero-carousel-container {
+    display: block;
     width: 100%;
-    position: relative;
-    flex: 0 0 auto;
-    height: 1em;
+    text-align: center;
+  }
+  
+  .hero.has-bg .word-carousel {
+    display: inline;
+    position: static;
   }
   
   .hero.has-bg .word-carousel .word {
-    left: 0;
-    transform: none;
-    width: auto;
-    white-space: nowrap;
+    position: static;
+    display: inline;
   }
   
   .hero.has-bg .word-carousel .word.active {
@@ -901,11 +927,13 @@ main {
   }
   
   .hero.has-bg .word-carousel .word.inactive {
-    transform: translateX(-50%) translateY(-100%);
+    transform: none;
+    display: none;
   }
   
   .hero.has-bg .word-carousel .word.slide-out {
-    transform: translateX(-50%) translateY(100%);
+    transform: none;
+    display: none;
   }
 }
 
