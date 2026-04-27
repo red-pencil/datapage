@@ -28,6 +28,10 @@
       feature3Item3: "审计日志",
       goalTitle: "我们的目标",
       goalDesc: "成为物理智能时代机器人数据基础设施的支柱。通过可靠的数据采集、处理和分析，让机器人能够学习、适应和进化。",
+      newsTitle: "新闻动态",
+      newsMore: "更多 →",
+      readMore: "阅读全文 →",
+      blogTitle: "博客",
       contact: "联系我们",
       footerCopyright: "© 2025 RDV. 保留所有权利。"
     },
@@ -57,6 +61,10 @@
       feature3Item3: "Audit Logging",
       goalTitle: "Our Goal",
       goalDesc: "To become the backbone of robotic intelligence by providing high-quality data infrastructure for the Physical AI era. We empower robots to learn, adapt, and evolve through reliable data collection, processing, and analytics.",
+      newsTitle: "Our News",
+      newsMore: "More →",
+      readMore: "Read More →",
+      blogTitle: "Blog",
       contact: "Contact",
       footerCopyright: "© 2025 RDV. All rights reserved."
     }
@@ -81,6 +89,9 @@
     updateLangSwitcher();
     initTheme();
     initHeaderScroll();
+    
+    var theme = document.documentElement.getAttribute('data-theme') || 'light';
+    updateMediaForTheme(theme);
     
     var langBtn = document.getElementById('lang-switch');
     if (langBtn) {
@@ -164,6 +175,16 @@
         icon.className = theme === 'dark' ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
       }
     }
+    
+    updateMediaForTheme(theme);
+  }
+  
+  function updateMediaForTheme(theme) {
+    var bgLight = document.getElementById('hero-bg-light');
+    var bgDark = document.getElementById('hero-bg-dark');
+    
+    if (bgLight) bgLight.style.display = theme === 'light' ? 'block' : 'none';
+    if (bgDark) bgDark.style.display = theme === 'dark' ? 'block' : 'none';
   }
 
   function toggleTheme() {
@@ -174,22 +195,30 @@
 
   function cycleMedia() {
     var hero = document.getElementById('hero');
-    var bg = document.getElementById('hero-bg');
+    var bgLight = document.getElementById('hero-bg-light');
+    var bgDark = document.getElementById('hero-bg-dark');
     var video = document.getElementById('hero-video');
     var mediaBtn = document.getElementById('media-switch');
     
     currentMediaIndex = (currentMediaIndex + 1) % mediaModes.length;
     var mode = mediaModes[currentMediaIndex];
+    var theme = document.documentElement.getAttribute('data-theme') || 'light';
     
-    if (bg) bg.classList.remove('active');
+    if (bgLight) bgLight.classList.remove('active');
+    if (bgDark) bgDark.classList.remove('active');
     if (video) video.classList.remove('active');
     
-    if (mode === 'image' && bg) {
-      bg.classList.add('active');
+    if (mode === 'image') {
+      if (theme === 'light' && bgLight) bgLight.classList.add('active');
+      if (theme === 'dark' && bgDark) bgDark.classList.add('active');
       hero.classList.add('has-bg');
-    } else if (mode === 'video' && video) {
-      video.classList.add('active');
-      hero.classList.add('has-bg');
+    } else if (mode === 'video') {
+      if (theme === 'light' && video) {
+        video.classList.add('active');
+        hero.classList.add('has-bg');
+      } else {
+        hero.classList.remove('has-bg');
+      }
     } else {
       hero.classList.remove('has-bg');
     }

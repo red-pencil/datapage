@@ -69,3 +69,25 @@ description: RDV - Robot Data Vehicle
     <p data-i18n="goalDesc">To become the backbone of robotic intelligence by providing high-quality data infrastructure for the Physical AI era. We empower robots to learn, adapt, and evolve through reliable data collection, processing, and analytics.</p>
   </div>
 </section>
+
+<section class="section section-alt" id="news">
+  <h2 class="section-title" data-i18n="newsTitle">Our News</h2>
+  <div class="news-list">
+    {% assign current_lang = site.lang | default: 'en' %}
+    {% assign news_posts = site.posts | where: "lang", current_lang | sort: date | reverse %}
+    {% for post in news_posts limit: 3 %}
+    <article class="news-item">
+      <div class="news-item-meta">
+        <span class="news-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+      </div>
+      <h3 class="news-item-title">
+        <a href="{{ post.url }}">{{ post.title }}</a>
+      </h3>
+      <p class="news-item-excerpt">{{ post.excerpt }}</p>
+    </article>
+    {% endfor %}
+  </div>
+  <div class="news-more">
+    <a href="{{ '/blog' | relative_url }}" class="btn btn-outline" data-i18n="newsMore">More →</a>
+  </div>
+</section>

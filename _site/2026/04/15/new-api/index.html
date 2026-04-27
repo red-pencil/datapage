@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Introducing Our New API Platform</title>
+  <meta name="description" content="Ego data for Robot">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>RDV</text></svg>">
+  <link rel="stylesheet" href="/assets/css/all.min.css">
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+  <div class="header-inner">
+    <a href="http://localhost:4000" class="logo">RDV</a>
+    <div class="header-actions">
+      <button class="media-switch" id="media-switch" title="Switch Background">
+        <i class="fa-solid fa-square"></i>
+      </button>
+      <button class="theme-switch" id="theme-switch" title="Switch Theme">
+        <i class="fa-solid fa-moon"></i>
+      </button>
+      <div class="lang-dropdown">
+        <button class="lang-switch" id="lang-switch" title="Switch Language">
+          <i class="fa-solid fa-globe"></i>
+        </button>
+        <div class="lang-menu" id="lang-menu">
+          <button class="lang-option active" data-lang="en">EN</button>
+          <button class="lang-option" data-lang="zh">中文</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+  
+  <main>
+    <p>We are proud to announce the launch of our new API platform, designed to make integrating robot data into your applications easier than ever.</p>
+
+<h2 id="key-features">Key Features</h2>
+
+<ul>
+  <li><strong>RESTful Architecture</strong>: Industry-standard REST API design</li>
+  <li><strong>Comprehensive Documentation</strong>: Clear and detailed API references</li>
+  <li><strong>Multiple Authentication Methods</strong>: API keys, OAuth 2.0 support</li>
+  <li><strong>Rate Limiting</strong>: Fair usage policies with generous limits</li>
+  <li><strong>Real-time Streaming</strong>: WebSocket support for live data</li>
+</ul>
+
+<h2 id="getting-started">Getting Started</h2>
+
+<p>Our new API makes it simple to:</p>
+<ol>
+  <li>Fetch robot telemetry data</li>
+  <li>Query historical data</li>
+  <li>Trigger robot actions</li>
+  <li>Subscribe to real-time events</li>
+  <li>Manage robot fleets</li>
+</ol>
+
+<p>Visit our documentation to get started today!</p>
+
+<h2 id="api-endpoints">API Endpoints</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET /api/v1/robots
+GET /api/v1/robots/{id}/telemetry
+POST /api/v1/robots/{id}/commands
+GET /api/v1/events
+</code></pre></div></div>
+
+<p>Stay tuned for more API enhancements in the coming weeks!</p>
+
+  </main>
+  
+  <footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-section">
+      <h3 class="footer-title" data-i18n="contact">Contact</h3>
+      <p class="footer-text">RDV</p>
+      <p class="footer-text">Email: hello@rdv.example.com</p>
+    </div>
+    <div class="footer-copyright">
+      <span>&copy; 2025 RDV. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+  
+  <script src="/assets/js/main.js"></script>
+</body>
+</html>

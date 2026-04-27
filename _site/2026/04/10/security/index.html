@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Securing Robot Data: Best Practices</title>
+  <meta name="description" content="Ego data for Robot">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>RDV</text></svg>">
+  <link rel="stylesheet" href="/assets/css/all.min.css">
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+  <div class="header-inner">
+    <a href="http://localhost:4000" class="logo">RDV</a>
+    <div class="header-actions">
+      <button class="media-switch" id="media-switch" title="Switch Background">
+        <i class="fa-solid fa-square"></i>
+      </button>
+      <button class="theme-switch" id="theme-switch" title="Switch Theme">
+        <i class="fa-solid fa-moon"></i>
+      </button>
+      <div class="lang-dropdown">
+        <button class="lang-switch" id="lang-switch" title="Switch Language">
+          <i class="fa-solid fa-globe"></i>
+        </button>
+        <div class="lang-menu" id="lang-menu">
+          <button class="lang-option active" data-lang="en">EN</button>
+          <button class="lang-option" data-lang="zh">中文</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+  
+  <main>
+    <p>At RDV, we take data security seriously. Here’s an overview of the security measures we implement to protect your robot data.</p>
+
+<h2 id="encryption">Encryption</h2>
+
+<p>All data is encrypted both in transit and at rest:</p>
+<ul>
+  <li><strong>TLS 1.3</strong> for all network communications</li>
+  <li><strong>AES-256</strong> encryption for stored data</li>
+  <li><strong>Zero-trust</strong> architecture throughout our platform</li>
+</ul>
+
+<h2 id="access-control">Access Control</h2>
+
+<p>We provide granular access control:</p>
+<ul>
+  <li>Role-based access control (RBAC)</li>
+  <li>Multi-factor authentication (MFA)</li>
+  <li>IP whitelisting</li>
+  <li>API key management</li>
+</ul>
+
+<h2 id="audit-logging">Audit Logging</h2>
+
+<p>Every action is logged:</p>
+<ul>
+  <li>User authentication events</li>
+  <li>Data access and modifications</li>
+  <li>Configuration changes</li>
+  <li>API calls</li>
+</ul>
+
+<h2 id="compliance">Compliance</h2>
+
+<p>Our platform is designed to meet industry standards:</p>
+<ul>
+  <li>SOC 2 Type II certified</li>
+  <li>GDPR compliant</li>
+  <li>ISO 27001 certified</li>
+</ul>
+
+<p>Your data security is our top priority.</p>
+
+  </main>
+  
+  <footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-section">
+      <h3 class="footer-title" data-i18n="contact">Contact</h3>
+      <p class="footer-text">RDV</p>
+      <p class="footer-text">Email: hello@rdv.example.com</p>
+    </div>
+    <div class="footer-copyright">
+      <span>&copy; 2025 RDV. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+  
+  <script src="/assets/js/main.js"></script>
+</body>
+</html>

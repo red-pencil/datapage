@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>全新 API 平台正式发布</title>
+  <meta name="description" content="Ego data for Robot">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>RDV</text></svg>">
+  <link rel="stylesheet" href="/assets/css/all.min.css">
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+  <div class="header-inner">
+    <a href="http://localhost:4000" class="logo">RDV</a>
+    <div class="header-actions">
+      <button class="media-switch" id="media-switch" title="Switch Background">
+        <i class="fa-solid fa-square"></i>
+      </button>
+      <button class="theme-switch" id="theme-switch" title="Switch Theme">
+        <i class="fa-solid fa-moon"></i>
+      </button>
+      <div class="lang-dropdown">
+        <button class="lang-switch" id="lang-switch" title="Switch Language">
+          <i class="fa-solid fa-globe"></i>
+        </button>
+        <div class="lang-menu" id="lang-menu">
+          <button class="lang-option active" data-lang="en">EN</button>
+          <button class="lang-option" data-lang="zh">中文</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+  
+  <main>
+    <p>我们自豪地宣布全新 API 平台正式发布，旨在使将机器人数据集成到您的应用程序中变得前所未有的简单。</p>
+
+<h2 id="主要特性">主要特性</h2>
+
+<ul>
+  <li><strong>RESTful 架构</strong>：行业标准的 REST API 设计</li>
+  <li><strong>完善的文档</strong>：清晰详细的 API 参考</li>
+  <li><strong>多种认证方式</strong>：API 密钥、OAuth 2.0 支持</li>
+  <li><strong>速率限制</strong>：公平使用政策，限额宽松</li>
+  <li><strong>实时流</strong>：支持 WebSocket 实时数据</li>
+</ul>
+
+<h2 id="快速开始">快速开始</h2>
+
+<p>我们的新 API 让您可以轻松：</p>
+<ol>
+  <li>获取机器人遥测数据</li>
+  <li>查询历史数据</li>
+  <li>触发机器人操作</li>
+  <li>订阅实时事件</li>
+  <li>管理机器人车队</li>
+</ol>
+
+<p>立即访问我们的文档开始使用！</p>
+
+<h2 id="api-端点">API 端点</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET /api/v1/robots
+GET /api/v1/robots/{id}/telemetry
+POST /api/v1/robots/{id}/commands
+GET /api/v1/events
+</code></pre></div></div>
+
+<p>请关注未来几周更多 API 增强功能！</p>
+
+  </main>
+  
+  <footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-section">
+      <h3 class="footer-title" data-i18n="contact">Contact</h3>
+      <p class="footer-text">RDV</p>
+      <p class="footer-text">Email: hello@rdv.example.com</p>
+    </div>
+    <div class="footer-copyright">
+      <span>&copy; 2025 RDV. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+  
+  <script src="/assets/js/main.js"></script>
+</body>
+</html>
