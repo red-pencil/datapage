@@ -794,6 +794,20 @@ main {
   color: var(--text-primary);
 }
 
+.footer-social .social-x {
+  display: flex;
+  align-items: center;
+}
+
+.footer-social .social-x svg {
+  fill: var(--text-secondary);
+  transition: fill 0.2s ease;
+}
+
+.footer-social .social-x:hover svg {
+  fill: var(--text-primary);
+}
+
 .footer-copyright {
   padding-top: 24px;
   border-top: 1px solid var(--border-light);
