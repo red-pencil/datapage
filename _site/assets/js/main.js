@@ -33,7 +33,11 @@
       footerEmail: "becky@rdv.bot",
       footerPhone: "+1 234 567 890",
       footerAddress: "美国加利福尼亚州旧金山",
-      footerCopyright: "© 2025 RDV. 保留所有权利。"
+      footerCopyright: "© 2025 RDV. 保留所有权利。",
+      contactTitle: "联系我们，关注我们",
+      contactEmail: "becky@rdv.bot",
+      contactLabel: "联系我们",
+      followLabel: "关注我们"
     },
     en: {
       heroTitleFixed: "Data Fuels",
@@ -66,7 +70,11 @@
       footerEmail: "becky@rdv.bot",
       footerPhone: "+1 234 567 890",
       footerAddress: "San Francisco, CA, USA",
-      footerCopyright: "© 2025 RDV. All rights reserved."
+      footerCopyright: "© 2025 RDV. All rights reserved.",
+      contactTitle: "Contact and follow us",
+      contactEmail: "becky@rdv.bot",
+      contactLabel: "Contact us",
+      followLabel: "Follow us"
     }
   };
 
