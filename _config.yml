@@ -1,11 +1,8 @@
 title: RDV
 description: Ego data for Robot
-url: https://rdv.example.com
-baseurl: ""
+url: "https://red-pencil.github.io"
+baseurl: "/datapage"
 lang: en
-
-# Minima theme
-theme: minima
 
 # Build settings
 markdown: kramdown
