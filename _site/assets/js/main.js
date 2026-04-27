@@ -6,12 +6,28 @@
       heroTitleFixed: "数据赋能",
       heroTitleWords: ["具身智能", "物理智能", "人工智能", "机器人", "一切", "未来"],
       cta: "了解更多",
-      products: [
-        { title: "数据采集", desc: "高效采集机器人设备数据，支持多种协议和格式" },
-        { title: "智能处理", desc: "AI 驱动的智能数据处理和分析能力" },
-        { title: "API 接口", desc: "标准化 RESTful API 接口，轻松集成" },
-        { title: "即将推出", desc: "更多功能敬请期待..." }
-      ],
+      productsTitle: "我们的产品",
+      product1Title: "数据采集",
+      product1Desc: "高效采集机器人设备数据，支持多种协议和格式",
+      product2Title: "智能处理",
+      product2Desc: "AI 驱动的智能数据处理和分析能力",
+      product3Title: "API 接口",
+      product3Desc: "标准化 RESTful API 接口，轻松集成",
+      featuresTitle: "我们的特色",
+      feature1Title: "数据采集",
+      feature1Item1: "多协议支持",
+      feature1Item2: "实时采集",
+      feature1Item3: "边缘计算",
+      feature2Title: "智能处理",
+      feature2Item1: "AI 分析",
+      feature2Item2: "自动分类",
+      feature2Item3: "模式识别",
+      feature3Title: "安全",
+      feature3Item1: "端到端加密",
+      feature3Item2: "访问控制",
+      feature3Item3: "审计日志",
+      goalTitle: "我们的目标",
+      goalDesc: "成为物理智能时代机器人数据基础设施的支柱。通过可靠的数据采集、处理和分析，让机器人能够学习、适应和进化。",
       contact: "联系我们",
       footerCopyright: "© 2025 RDV. 保留所有权利。"
     },
@@ -19,12 +35,28 @@
       heroTitleFixed: "Data Fuels",
       heroTitleWords: ["Physical AI", "Embodied AI", "Humanoid", "AI", "All", "Future"],
       cta: "Learn More",
-      products: [
-        { title: "Data Collection", desc: "Efficiently collect robot device data with multi-protocol support" },
-        { title: "Smart Processing", desc: "AI-driven intelligent data processing and analytics" },
-        { title: "API Interface", desc: "Standardized RESTful API for easy integration" },
-        { title: "Coming Soon", desc: "More features to be announced..." }
-      ],
+      productsTitle: "Our Product",
+      product1Title: "Data Collection",
+      product1Desc: "Efficiently collect robot device data with multi-protocol support",
+      product2Title: "Smart Processing",
+      product2Desc: "AI-driven intelligent data processing and analytics",
+      product3Title: "API Interface",
+      product3Desc: "Standardized RESTful API for easy integration",
+      featuresTitle: "Our Feature",
+      feature1Title: "Data Collection",
+      feature1Item1: "Multi-protocol Support",
+      feature1Item2: "Real-time Collection",
+      feature1Item3: "Edge Computing",
+      feature2Title: "Smart Processing",
+      feature2Item1: "AI Analytics",
+      feature2Item2: "Auto Classification",
+      feature2Item3: "Pattern Recognition",
+      feature3Title: "Security",
+      feature3Item1: "End-to-end Encryption",
+      feature3Item2: "Access Control",
+      feature3Item3: "Audit Logging",
+      goalTitle: "Our Goal",
+      goalDesc: "To become the backbone of robotic intelligence by providing high-quality data infrastructure for the Physical AI era. We empower robots to learn, adapt, and evolve through reliable data collection, processing, and analytics.",
       contact: "Contact",
       footerCopyright: "© 2025 RDV. All rights reserved."
     }
@@ -268,6 +300,11 @@
     var products = document.getElementById('products');
     if (products) {
       products.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      var features = document.getElementById('features');
+      if (features) {
+        features.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   }
 
@@ -283,13 +320,11 @@
     wordIndex = 0;
     updateCarouselWords();
 
-    var productItems = document.querySelectorAll('.product-item');
-    for (var i = 0; i < t.products.length; i++) {
-      if (productItems[i]) {
-        var titleEl = productItems[i].querySelector('.product-title');
-        var descEl = productItems[i].querySelector('.product-desc');
-        if (titleEl) titleEl.textContent = t.products[i].title;
-        if (descEl) descEl.textContent = t.products[i].desc;
+    var i18nElements = document.querySelectorAll('[data-i18n]');
+    for (var i = 0; i < i18nElements.length; i++) {
+      var key = i18nElements[i].getAttribute('data-i18n');
+      if (t[key]) {
+        i18nElements[i].textContent = t[key];
       }
     }
 
