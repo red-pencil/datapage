@@ -5,6 +5,7 @@ description: Latest news and updates from RDV
 ---
 
 <section class="section" id="blog">
+  <a href="{{ '/' | relative_url }}" class="back-link">← <span data-i18n="backToHome">Back</span></a>
   <h2 class="section-title" data-i18n="blogTitle">Blog</h2>
   <div class="blog-list">
     {% assign posts = site.posts | where:"lang", site.lang | sort: date | reverse %}
