@@ -351,10 +351,8 @@ main {
 .hero.has-bg .hero-title {
   font-size: clamp(24px, 5vw, 36px);
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: baseline;
-  gap: 8px;
-  text-align: center;
 }
 
 .hero.has-bg .hero-fixed {
@@ -409,9 +407,15 @@ main {
   letter-spacing: 2px;
   color: var(--text-primary);
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: baseline;
-  gap: 12px;
+  gap: 0.5em;
+}
+
+.hero-fixed-container {
+  flex: 1 1 0;
+  min-width: 0;
+  text-align: right;
 }
 
 .hero-fixed {
@@ -420,12 +424,10 @@ main {
   min-width: 140px;
 }
 
-.word-carousel {
-  display: inline-block;
-  position: relative;
+.hero-carousel-container {
+  flex: 1 1 0;
+  min-width: 0;
   text-align: left;
-  min-width: 220px;
-  height: 1.2em;
 }
 
 .word-carousel {
@@ -442,6 +444,7 @@ main {
   left: 0;
   top: 0;
   width: 220px;
+  text-align: left;
   transition: all 0.8s ease;
 }
 
@@ -598,8 +601,11 @@ main {
   
   .hero-content {
     max-width: 90%;
-    padding: 0 20px;
-    margin: auto;
+    width: 90%;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    transform: none;
   }
   
   .hero-title {
@@ -607,7 +613,17 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 8px;
+    gap: 0.5em;
+  }
+  
+  .hero-fixed-container {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .hero-carousel-container {
+    width: 100%;
+    text-align: center;
   }
   
   .hero-fixed {
@@ -627,6 +643,7 @@ main {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
+    top: 0;
     width: 180px;
     text-align: center;
     transition: all 0.8s ease;
