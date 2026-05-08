@@ -82,7 +82,7 @@
   var wordIndex = 0;
   var wordInterval = null;
   var mediaModes = ['image', 'video', 'none'];
-  var currentMediaIndex = 0;
+  var currentMediaIndex = 2; // start at 'none' mode
   var headerTimeout = null;
   var headerActions = null;
 
