@@ -249,7 +249,7 @@ main {
   font-weight: 300;
   margin-bottom: 24px;
   text-align: center;
-  color: var(--text-primary);
+  color: var(--text-secondary);
   text-transform: uppercase;
   letter-spacing: 1px;
 }
