@@ -536,7 +536,7 @@ main {
 }
 
 .hero.has-bg .word-carousel .word {
-  width: 100px;
+  /* width: 100px; */
 }
 
 .hero-bg {
@@ -973,7 +973,7 @@ main {
     position: relative;
     width: 100%;
     text-align: center;
-    height: 2em;
+    height: 1.5em;
     flex: 0 0 auto;
   }
   
@@ -986,36 +986,47 @@ main {
   }
   
   .hero.has-bg .hero-carousel-container {
-    display: block;
     width: 100%;
-    text-align: center;
-    height: 2em;
+    position: relative;
     flex: 0 0 auto;
+    height: 1.5em;
   }
   
   .hero.has-bg .word-carousel {
-    display: inline;
-    position: static;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
   }
   
   .hero.has-bg .word-carousel .word {
-    position: static;
-    display: inline;
+    position: absolute;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    transition: all 0.8s ease;
   }
   
   .hero.has-bg .word-carousel .word.active {
-    transform: none;
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
   }
   
   .hero.has-bg .word-carousel .word.inactive {
-    transform: none;
-    display: none;
+    transform: translateX(-50%) translateY(-100%);
+    opacity: 0;
   }
   
   .hero.has-bg .word-carousel .word.slide-out {
-    transform: none;
-    display: none;
+    transform: translateX(-50%) translateY(100%);
+    opacity: 0;
   }
+  .hero.has-bg .word-carousel .word.slide-in {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+  }
+
+
 }
 
 /* Future: Hero Video/Slide Support */
