@@ -245,11 +245,13 @@ main {
 }
 
 .section-title {
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 500;
   margin-bottom: 24px;
   text-align: center;
   color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .back-link {
