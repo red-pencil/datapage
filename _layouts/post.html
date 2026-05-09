@@ -2,18 +2,25 @@
 layout: default
 ---
 <section class="section" id="post">
-  <a href="/blog" class="back-link">← <span data-i18n="backToHome">Back</span></a>
+  <a href="{{ '/blog' | relative_url }}" class="back-link">← <span data-i18n="backToHome">Back</span></a>
   
-  <h1 class="post-title">{{ page.title }}</h1>
+  <h1 class="post-title" data-en="{{ page.title }}" data-zh="{{ page.title_zh | default: page.title }}">{{ page.title }}</h1>
   
   <div class="post-meta">
     <span class="post-date">{{ page.date | date: "%Y-%m-%d" }}</span>
-    {% if page.lang %}
-    <span class="post-lang">{{ page.lang }}</span>
-    {% endif %}
+    <span class="post-lang">EN / ZH</span>
   </div>
   
   <div class="post-content">
+    {% if content contains '<!-- EN -->' %}
+    <!-- Split content by language markers -->
+    {% assign en_content = content | split: '<!-- EN -->' | last | split: '<!-- ZH -->' | first %}
+    {% assign zh_content = content | split: '<!-- ZH -->' | last %}
+    <div class="post-lang-content" data-lang="en">{{ en_content }}</div>
+    <div class="post-lang-content" data-lang="zh">{{ zh_content }}</div>
+    {% else %}
+    <!-- No language markers, show as is -->
     {{ content }}
+    {% endif %}
   </div>
 </section>

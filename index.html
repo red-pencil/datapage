@@ -64,15 +64,15 @@ description: RDV - Robot Data Vehicle
   <h2 class="section-title" data-i18n="newsTitle">Our News</h2>
   <div class="news-list">
     {% assign news_posts = site.posts | sort: date | reverse %}
-    {% for post in news_posts %}
-    <article class="news-item" data-lang="{{ post.lang }}">
+    {% for post in news_posts limit: 3 %}
+    <article class="news-item">
       <div class="news-item-meta">
         <span class="news-date">{{ post.date | date: "%Y-%m-%d" }}</span>
       </div>
       <h3 class="news-item-title">
-        <a href="{{ post.url }}">{{ post.title }}</a>
+        <a href="{{ post.url }}" data-en="{{ post.title }}" data-zh="{{ post.title_zh | default: post.title }}">{{ post.title }}</a>
       </h3>
-      <p class="news-item-excerpt">{{ post.excerpt }}</p>
+      <p class="news-item-excerpt" data-en="{{ post.excerpt }}" data-zh="{{ post.excerpt_zh | default: post.excerpt }}">{{ post.excerpt }}</p>
     </article>
     {% endfor %}
   </div>

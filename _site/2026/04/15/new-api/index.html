@@ -37,17 +37,20 @@
     <section class="section" id="post">
   <a href="/blog" class="back-link">← <span data-i18n="backToHome">Back</span></a>
   
-  <h1 class="post-title">Introducing Our New API Platform</h1>
+  <h1 class="post-title" data-en="Introducing Our New API Platform" data-zh="全新 API 平台正式发布">Introducing Our New API Platform</h1>
   
   <div class="post-meta">
     <span class="post-date">2026-04-15</span>
-    
-    <span class="post-lang">en</span>
-    
+    <span class="post-lang">EN / ZH</span>
   </div>
   
   <div class="post-content">
-    <p>We are proud to announce the launch of our new API platform, designed to make integrating robot data into your applications easier than ever.</p>
+    
+    <!-- Split content by language markers -->
+    
+    
+    <div class="post-lang-content" data-lang="en">
+<p>We are proud to announce the launch of our new API platform, designed to make integrating robot data into your applications easier than ever.</p>
 
 <h2 id="key-features">Key Features</h2>
 
@@ -82,6 +85,44 @@ GET /api/v1/events
 
 <p>Stay tuned for more API enhancements in the coming weeks!</p>
 
+</div>
+    <div class="post-lang-content" data-lang="zh">
+<p>我们自豪地宣布全新 API 平台正式发布，旨在使将机器人数据集成到您的应用程序中变得前所未有的简单。</p>
+
+<h2 id="主要特性">主要特性</h2>
+
+<ul>
+  <li><strong>RESTful 架构</strong>：行业标准的 REST API 设计</li>
+  <li><strong>完善的文档</strong>：清晰详细的 API 参考</li>
+  <li><strong>多种认证方式</strong>：API 密钥、OAuth 2.0 支持</li>
+  <li><strong>速率限制</strong>：公平使用政策，限额宽松</li>
+  <li><strong>实时流</strong>：支持 WebSocket 实时数据</li>
+</ul>
+
+<h2 id="快速开始">快速开始</h2>
+
+<p>我们的新 API 让您可以轻松：</p>
+<ol>
+  <li>获取机器人遥测数据</li>
+  <li>查询历史数据</li>
+  <li>触发机器人操作</li>
+  <li>订阅实时事件</li>
+  <li>管理机器人车队</li>
+</ol>
+
+<p>立即访问我们的文档开始使用！</p>
+
+<h2 id="api-端点">API 端点</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET /api/v1/robots
+GET /api/v1/robots/{id}/telemetry
+POST /api/v1/robots/{id}/commands
+GET /api/v1/events
+</code></pre></div></div>
+
+<p>请关注未来几周更多 API 增强功能！</p>
+</div>
+    
   </div>
 </section>
   </main>

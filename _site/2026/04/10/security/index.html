@@ -37,17 +37,20 @@
     <section class="section" id="post">
   <a href="/blog" class="back-link">← <span data-i18n="backToHome">Back</span></a>
   
-  <h1 class="post-title">Securing Robot Data: Best Practices</h1>
+  <h1 class="post-title" data-en="Securing Robot Data: Best Practices" data-zh="机器人数据安全：最佳实践">Securing Robot Data: Best Practices</h1>
   
   <div class="post-meta">
     <span class="post-date">2026-04-10</span>
-    
-    <span class="post-lang">en</span>
-    
+    <span class="post-lang">EN / ZH</span>
   </div>
   
   <div class="post-content">
-    <p>At RDV, we take data security seriously. Here’s an overview of the security measures we implement to protect your robot data.</p>
+    
+    <!-- Split content by language markers -->
+    
+    
+    <div class="post-lang-content" data-lang="en">
+<p>At RDV, we take data security seriously. Here’s an overview of the security measures we implement to protect your robot data.</p>
 
 <h2 id="encryption">Encryption</h2>
 
@@ -89,6 +92,51 @@
 
 <p>Your data security is our top priority.</p>
 
+</div>
+    <div class="post-lang-content" data-lang="zh">
+<p>在 RDV，我们高度重视数据安全。以下是我们为保护您的机器人数据而实施的安全措施概述。</p>
+
+<h2 id="加密">加密</h2>
+
+<p>所有数据在传输和存储时均经过加密：</p>
+<ul>
+  <li>所有网络通信使用 <strong>TLS 1.3</strong></li>
+  <li>存储数据使用 <strong>AES-256</strong> 加密</li>
+  <li>整个平台采用<strong>零信任</strong>架构</li>
+</ul>
+
+<h2 id="访问控制">访问控制</h2>
+
+<p>我们提供细粒度的访问控制：</p>
+<ul>
+  <li>基于角色的访问控制（RBAC）</li>
+  <li>多因素身份验证（MFA）</li>
+  <li>IP 白名单</li>
+  <li>API 密钥管理</li>
+</ul>
+
+<h2 id="审计日志">审计日志</h2>
+
+<p>记录每一次操作：</p>
+<ul>
+  <li>用户身份验证事件</li>
+  <li>数据访问和修改</li>
+  <li>配置更改</li>
+  <li>API 调用</li>
+</ul>
+
+<h2 id="合规性">合规性</h2>
+
+<p>我们的平台符合行业标准：</p>
+<ul>
+  <li>SOC 2 Type II 认证</li>
+  <li>GDPR 合规</li>
+  <li>ISO 27001 认证</li>
+</ul>
+
+<p>您的数据安全是我们的首要任务。</p>
+</div>
+    
   </div>
 </section>
   </main>

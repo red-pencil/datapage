@@ -503,6 +503,19 @@ main {
   font-size: 16px;
 }
 
+#post {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+#post .post-title,
+#post .post-meta,
+#post .post-content {
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .post-content h2 {
   font-size: 26px;
   font-weight: 600;
@@ -566,6 +579,20 @@ main {
   color: var(--text-secondary);
 }
 
+/* Post Language Content Toggle */
+.post-lang-content {
+  display: none;
+}
+
+.post-lang-content[data-lang="en"],
+.post-lang-content[data-lang="zh"] {
+  display: none;
+}
+
+.post-lang-content.active {
+  display: block;
+}
+
 /* Hero Section */
 .hero {
   height: 100vh;
@@ -601,6 +628,7 @@ main {
   display: flex;
   justify-content: center;
   align-items: baseline;
+  height: 1.5em;
 }
 
 .hero.has-bg .hero-fixed-container {

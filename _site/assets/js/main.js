@@ -370,29 +370,26 @@
   }
 
   function filterBlogPosts() {
-    var blogPosts = document.querySelectorAll('.blog-item');
-    for (var i = 0; i < blogPosts.length; i++) {
-      var lang = blogPosts[i].getAttribute('data-lang');
-      if (lang === currentLang) {
-        blogPosts[i].style.display = '';
-      } else {
-        blogPosts[i].style.display = 'none';
+    // Switch blog list and news list titles/excerpts based on currentLang
+    var blogTitles = document.querySelectorAll('.blog-item-title a, .news-item-title a');
+    for (var i = 0; i < blogTitles.length; i++) {
+      var enTitle = blogTitles[i].getAttribute('data-en');
+      var zhTitle = blogTitles[i].getAttribute('data-zh');
+      if (currentLang === 'zh' && zhTitle) {
+        blogTitles[i].textContent = zhTitle;
+      } else if (currentLang === 'en' && enTitle) {
+        blogTitles[i].textContent = enTitle;
       }
     }
 
-    var newsItems = document.querySelectorAll('.news-item');
-    var count = 0;
-    for (var j = 0; j < newsItems.length; j++) {
-      var newsLang = newsItems[j].getAttribute('data-lang');
-      if (newsLang === currentLang) {
-        if (count < 3) {
-          newsItems[j].style.display = '';
-          count++;
-        } else {
-          newsItems[j].style.display = 'none';
-        }
-      } else {
-        newsItems[j].style.display = 'none';
+    var excerpts = document.querySelectorAll('.blog-item-excerpt, .news-item-excerpt');
+    for (var j = 0; j < excerpts.length; j++) {
+      var enExcerpt = excerpts[j].getAttribute('data-en');
+      var zhExcerpt = excerpts[j].getAttribute('data-zh');
+      if (currentLang === 'zh' && zhExcerpt) {
+        excerpts[j].textContent = zhExcerpt;
+      } else if (currentLang === 'en' && enExcerpt) {
+        excerpts[j].textContent = enExcerpt;
       }
     }
   }
@@ -424,6 +421,30 @@
     if (copyright) copyright.textContent = t.footerCopyright;
 
     filterBlogPosts();
+    filterPostContent();
+  }
+
+  function filterPostContent() {
+    var postTitle = document.querySelector('.post-title');
+    if (postTitle) {
+      var zhTitle = postTitle.getAttribute('data-zh');
+      var enTitle = postTitle.getAttribute('data-en');
+      if (currentLang === 'zh' && zhTitle) {
+        postTitle.textContent = zhTitle;
+      } else if (currentLang === 'en' && enTitle) {
+        postTitle.textContent = enTitle;
+      }
+    }
+
+    var langContents = document.querySelectorAll('.post-lang-content');
+    for (var i = 0; i < langContents.length; i++) {
+      var lang = langContents[i].getAttribute('data-lang');
+      if (lang === currentLang) {
+        langContents[i].classList.add('active');
+      } else {
+        langContents[i].classList.remove('active');
+      }
+    }
   }
 
   if (document.readyState === 'loading') {
