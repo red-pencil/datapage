@@ -8,6 +8,9 @@ layout: default
   
   <div class="post-meta">
     <span class="post-date">{{ page.date | date: "%Y-%m-%d" }}</span>
+    {% if page.lang %}
+    <span class="post-lang">{{ page.lang }}</span>
+    {% endif %}
   </div>
   
   <div class="post-content">
