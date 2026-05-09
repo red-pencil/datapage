@@ -2,6 +2,7 @@
 title: "物理智能：机器人技术的新前沿"
 date: 2026-04-20
 lang: zh
+layout: post
 excerpt: "探索物理智能如何改变机器人与物理世界互动的方式。"
 ---
 

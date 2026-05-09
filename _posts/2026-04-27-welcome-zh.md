@@ -2,6 +2,7 @@
 title: "欢迎来到 RDV - 数据驱动机器人未来"
 date: 2026-04-27
 lang: zh
+layout: post
 excerpt: "我们很高兴推出新网站，并分享我们对机器人智能未来的愿景。"
 ---
 

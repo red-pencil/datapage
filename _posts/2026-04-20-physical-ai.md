@@ -2,6 +2,7 @@
 title: "Physical AI: The Next Frontier in Robotics"
 date: 2026-04-20
 lang: en
+layout: post
 excerpt: "Exploring how Physical AI is revolutionizing the way robots interact with the physical world."
 ---
 

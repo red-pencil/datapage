@@ -2,6 +2,7 @@
 title: "机器人数据安全：最佳实践"
 date: 2026-04-10
 lang: zh
+layout: post
 excerpt: "了解我们如何实施安全措施来保护您的机器人数据。"
 ---
 
