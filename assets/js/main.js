@@ -369,6 +369,34 @@
     }
   }
 
+  function filterBlogPosts() {
+    var blogPosts = document.querySelectorAll('.blog-item');
+    for (var i = 0; i < blogPosts.length; i++) {
+      var lang = blogPosts[i].getAttribute('data-lang');
+      if (lang === currentLang) {
+        blogPosts[i].style.display = '';
+      } else {
+        blogPosts[i].style.display = 'none';
+      }
+    }
+
+    var newsItems = document.querySelectorAll('.news-item');
+    var count = 0;
+    for (var j = 0; j < newsItems.length; j++) {
+      var newsLang = newsItems[j].getAttribute('data-lang');
+      if (newsLang === currentLang) {
+        if (count < 3) {
+          newsItems[j].style.display = '';
+          count++;
+        } else {
+          newsItems[j].style.display = 'none';
+        }
+      } else {
+        newsItems[j].style.display = 'none';
+      }
+    }
+  }
+
   function applyTranslations() {
     var t = i18n[currentLang];
     if (!t) return;
@@ -394,6 +422,8 @@
 
     var copyright = document.querySelector('.footer-copyright');
     if (copyright) copyright.textContent = t.footerCopyright;
+
+    filterBlogPosts();
   }
 
   if (document.readyState === 'loading') {

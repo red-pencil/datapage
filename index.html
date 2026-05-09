@@ -63,10 +63,9 @@ description: RDV - Robot Data Vehicle
 <section class="section section-alt" id="news">
   <h2 class="section-title" data-i18n="newsTitle">Our News</h2>
   <div class="news-list">
-    {% assign current_lang = site.lang | default: 'en' %}
-    {% assign news_posts = site.posts | where: "lang", current_lang | sort: date | reverse %}
-    {% for post in news_posts limit: 3 %}
-    <article class="news-item">
+    {% assign news_posts = site.posts | sort: date | reverse %}
+    {% for post in news_posts %}
+    <article class="news-item" data-lang="{{ post.lang }}">
       <div class="news-item-meta">
         <span class="news-date">{{ post.date | date: "%Y-%m-%d" }}</span>
       </div>

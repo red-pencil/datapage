@@ -8,9 +8,9 @@ description: Latest news and updates from RDV
   <a href="{{ '/' | relative_url }}" class="back-link">← <span data-i18n="backToHome">Back</span></a>
   <h2 class="section-title" data-i18n="blogTitle">Blog</h2>
   <div class="blog-list">
-    {% assign posts = site.posts | where:"lang", site.lang | sort: date | reverse %}
+    {% assign posts = site.posts | sort: date | reverse %}
     {% for post in posts %}
-    <article class="blog-item">
+    <article class="blog-item" data-lang="{{ post.lang }}">
       <div class="blog-item-meta">
         <span class="blog-date">{{ post.date | date: "%Y-%m-%d" }}</span>
       </div>
